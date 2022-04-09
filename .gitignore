@@ -367,3 +367,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+.idea
+TrippyGL/TrippyGL/TrippyGL.xml
+TrippyGL.Fonts/TrippyGL.Fonts/TrippyGL.Fonts.xml
+TrippyGL.Fonts.Building/TrippyGL.Fonts.Building/TrippyGL.Fonts.Building.xml
+TrippyGL.Fonts.Extensions/TrippyGL.Fonts.Extensions/TrippyGL.Fonts.Extensions.xml
+TrippyGL.ImageSharp/TrippyGL.ImageSharp/TrippyGL.ImageSharp.xml

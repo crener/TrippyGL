@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageProjectUrl>https://github.com/SilkCommunity/TrippyGL</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SilkCommunity/TrippyGL</RepositoryUrl>
     <PackageIcon>TrippyGL_logo.png</PackageIcon>
@@ -14,10 +13,11 @@
 This package provides integration between TrippyGL.Fonts and the main TrippyGL package.</Description>
     <PackageTags>OpenGL;graphics;gamedev;desktopgl;fonts;text</PackageTags>
     <RepositoryType>git</RepositoryType>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\Thomas Mizrahi\Documents\Visual Studio 2019\GitHub\ThomasMiz\TrippyGL\TrippyGL.Fonts.Extensions\TrippyGL.Fonts.Extensions.xml</DocumentationFile>
+    <DocumentationFile>TrippyGL.Fonts.Extensions\TrippyGL.Fonts.Extensions.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

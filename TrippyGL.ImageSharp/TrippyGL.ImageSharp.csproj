@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
     <Version>1.1.1</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>ThomasMiz</Authors>
@@ -14,10 +13,11 @@
 This package provides integration with the ImageSharp library, allowing loading and saving textures from files or images.</Description>
     <PackageTags>OpenGL;graphics;gamedev;desktopgl;images;ImageSharp;textures;</PackageTags>
     <RepositoryType>git</RepositoryType>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\Thomas Mizrahi\Documents\Visual Studio 2019\GitHub\ThomasMiz\TrippyGL\TrippyGL.ImageSharp\TrippyGL.ImageSharp.xml</DocumentationFile>
+    <DocumentationFile>TrippyGL.ImageSharp\TrippyGL.ImageSharp.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

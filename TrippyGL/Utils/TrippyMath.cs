@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics.Contracts;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 #pragma warning disable CA1062 // Validate arguments of public methods
 
@@ -28,6 +30,7 @@ namespace TrippyGL.Utils
         /// <param name="min">The initial value in the interpolation.</param>
         /// <param name="max">The final value in the interpolation.</param>
         /// <param name="amount">The amount of interpolation, measured between 0 and 1.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float Lerp(float min, float max, float amount)
         {
             return min + (max - min) * amount;
@@ -43,6 +46,7 @@ namespace TrippyGL.Utils
         /// In comparison to <see cref="Lerp(float, float, float)"/>, this function is more
         /// precise when working with big values.
         /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float LerpPrecise(float min, float max, float amount)
         {
             return (1 - amount) * min + max * amount;
@@ -54,6 +58,7 @@ namespace TrippyGL.Utils
         /// <param name="min">The initial value in the interpolation.</param>
         /// <param name="max">The final value in the interpolation.</param>
         /// <param name="amount">The amount of interpolation, measured between 0 and 1.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float SmoothStep(float min, float max, float amount)
         {
             // Lerp using the polynomial: 3xx - 2xxx
@@ -70,6 +75,7 @@ namespace TrippyGL.Utils
         /// In comparison to <see cref="SmoothStep(float, float, float)"/>, this function is more
         /// precise when working with big values.
         /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float SmoothStepPrecise(float min, float max, float amount)
         {
             return LerpPrecise(min, max, (3 - 2 * amount) * amount * amount);
@@ -81,6 +87,7 @@ namespace TrippyGL.Utils
         /// <param name="min">The initial value in the interpolation.</param>
         /// <param name="max">The final value in the interpolation.</param>
         /// <param name="amount">The amount of interpolation, measured between 0 and 1.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float SmootherStep(float min, float max, float amount)
         {
             // Lerp using the polynomial: 6(x^5) - 15(x^4) + 10(x^3)
@@ -96,6 +103,7 @@ namespace TrippyGL.Utils
         /// <remarks>
         /// In comparison to <see cref="SmootherStep(float, float, float)"/>, this function is more
         /// precise when working with big values.
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         /// </remarks>
         public static float SmootherStepPrecise(float min, float max, float amount)
         {
@@ -115,6 +123,7 @@ namespace TrippyGL.Utils
         /// newCapacity = currentCapacity * pow(2, ceiling(log2(requiredCapacity/currentCapacity)));
         /// </code>
         /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static int GetNextCapacity(int currentCapacity, int requiredCapacity)
         {
             // Finds the smallest number that is greater than requiredCapacity and satisfies this equation:
@@ -128,6 +137,7 @@ namespace TrippyGL.Utils
         /// <summary>
         /// Calculates an integer value, raised to an integer exponent. Only works with positive values.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static int IntegerPow(int value, int exponent)
         {
             int r = 1;
@@ -145,6 +155,7 @@ namespace TrippyGL.Utils
         /// Returns a random direction, as a unit vector.
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Vector2 RandomDirection2(this Random random)
         {
             float angle = (float)(random.NextDouble() * 6.283185307179586476925286766559);
@@ -156,6 +167,7 @@ namespace TrippyGL.Utils
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="length">The desired length of the direction vector.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Vector2 RandomDirection2(this Random random, float length)
         {
             return random.RandomDirection2() * length;
@@ -165,6 +177,7 @@ namespace TrippyGL.Utils
         /// Returns a random direction, as a unit vector.
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Vector3 RandomDirection3(this Random random)
         {
             float a = (float)(random.NextDouble() * 6.283185307179586476925286766559);
@@ -178,6 +191,7 @@ namespace TrippyGL.Utils
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="length">The desired length of the direction vector.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Vector3 RandomDirection3(this Random random, float length)
         {
             return random.RandomDirection3() * length;
@@ -187,6 +201,7 @@ namespace TrippyGL.Utils
         /// Returns a random floating-point number in the range [0.0, 1.0).
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float NextFloat(this Random random)
         {
             return (float)random.NextDouble();
@@ -197,6 +212,7 @@ namespace TrippyGL.Utils
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="max">The exclusive maximum value of the random number to be generated.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float NextFloat(this Random random, float max)
         {
             return (float)random.NextDouble() * max;
@@ -208,6 +224,7 @@ namespace TrippyGL.Utils
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="min">The inclusive minimum value of the random number to be generated.</param>
         /// <param name="max">The exclusive maximum value of the random number to be generated.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static float NextFloat(this Random random, float min, float max)
         {
             return (float)random.NextDouble() * (max - min) + min;
@@ -218,6 +235,7 @@ namespace TrippyGL.Utils
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="max">The exclusive maximum value of the random number to be generated.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static double NextDouble(this Random random, double max)
         {
             return random.NextDouble() * max;
@@ -229,6 +247,7 @@ namespace TrippyGL.Utils
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
         /// <param name="min">The inclusive minimum value of the random number to be generated.</param>
         /// <param name="max">The exclusive maximum value of the random number to be generated.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static double NextDouble(this Random random, double min, double max)
         {
             return random.NextDouble() * (max - min) + min;
@@ -238,6 +257,7 @@ namespace TrippyGL.Utils
         /// Returns a random boolean value.
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static bool NextBool(this Random random)
         {
             return (random.Next() & 1) == 0;
@@ -247,6 +267,7 @@ namespace TrippyGL.Utils
         /// Constructs a completely randomized <see cref="Color4b"/>.
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Color4b NextColor4b(this Random random)
         {
             // A single random value isn't enough, it's only 31 bits...
@@ -262,6 +283,7 @@ namespace TrippyGL.Utils
         /// Constructs a randomized <see cref="Color4b"/> with an alpha value of 255.
         /// </summary>
         /// <param name="random">The <see cref="Random"/> to use for randomizing.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
         public static Color4b NextColor4bFullAlpha(this Random random)
         {
             unchecked

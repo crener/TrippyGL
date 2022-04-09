@@ -139,24 +139,31 @@ namespace TrippyGL
         /// Calculates and sets all the values on this <see cref="TextureBatchItem"/> except for <see cref="SortValue"/>
         /// without calculating rotation nor scale.
         /// </summary>
+        private Color4b lastColour = default;
         public void SetValue(Texture2D texture, Vector2 position, Rectangle source, Color4b color, float depth)
         {
             Texture = texture;
+            float widthf = (float)texture.Width;
+            float heightf = (float)texture.Height;
 
             VertexTL.Position = new Vector3(position, depth);
             VertexTR.Position = new Vector3(position.X + source.Width, position.Y, depth);
             VertexBL.Position = new Vector3(position.X, position.Y + source.Height, depth);
             VertexBR.Position = new Vector3(position + new Vector2(source.Width, source.Height), depth);
 
-            VertexTL.TexCoords = new Vector2(source.X / (float)texture.Width, source.Y / (float)texture.Height);
-            VertexBR.TexCoords = new Vector2(source.Right / (float)texture.Width, source.Bottom / (float)texture.Height);
-            VertexTR.TexCoords = new Vector2(VertexBR.TexCoords.X, VertexTL.TexCoords.Y);
+            VertexTL.TexCoords = new Vector2(source.X / widthf, source.Y / heightf); 
+            VertexBR.TexCoords = new Vector2(source.Right / widthf, source.Bottom / heightf); 
+            VertexTR.TexCoords = new Vector2(VertexBR.TexCoords.X, VertexTL.TexCoords.Y); 
             VertexBL.TexCoords = new Vector2(VertexTL.TexCoords.X, VertexBR.TexCoords.Y);
 
-            VertexTL.Color = color;
-            VertexTR.Color = color;
-            VertexBL.Color = color;
-            VertexBR.Color = color;
+            if(color != lastColour)
+            { 
+                VertexTL.Color = color; 
+                VertexTR.Color = color; 
+                VertexBL.Color = color; 
+                VertexBR.Color = color;
+                lastColour = color;
+            }
         }
 
         /// <summary>

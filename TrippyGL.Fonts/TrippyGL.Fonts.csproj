@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.1.1</Version>
     <Authors>ThomasMiz</Authors>
@@ -16,10 +15,11 @@ This package provides basic font creating/loading/saving functionality.</Descrip
     <PackageReleaseNotes>Changelog from 1.0.0:
 - Fixed possible issue when building many fonts on different threads at the same time</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\Thomas Mizrahi\Documents\Visual Studio 2019\GitHub\ThomasMiz\TrippyGL\TrippyGL.Fonts\TrippyGL.Fonts.xml</DocumentationFile>
+    <DocumentationFile>TrippyGL.Fonts\TrippyGL.Fonts.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
